@@ -192,6 +192,25 @@
   <script src=".well-known/gruft/src/gruft-sha256.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/emn178/js-sha3/build/sha3.min.js"></script>
   <script src=".well-known/gruft/src/gruft-tiger192.js"></script>
+  <script type="module">
+    import {Octokit, App} from "https://cdn.skypack.dev/octokit";
+    import {App} from "octokit";
+
+    const app = new App({appId, privateKey});
+
+    for await (const {octokit, repository} of app.eachRepository.iterator()) {
+      // https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
+      await octokit.rest.repos.createDispatchEvent({
+        owner: repository.owner.login,
+        repo: repository.name,
+        event_type: "own_event", // nostr.jindabaad.
+        client_payload: {
+          pura: "vida!:npub1fx6036g40wq40c2nqgrssa0xxx8jx4hawgks8uujwxhjaa9scwysshkwcg",
+        },
+      });
+      console.log("Event distpatched for %s", repository.full_name);
+    }
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.4/socket.io.min.js"
     integrity="sha512-qXjK7fRhV6plK/Vpaknn+5Fe0dXhJqdbiQKpLghl0XKir10zEEzSNqheA1MY7nh9H8cu7giAYTibHTBvt37PQg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
