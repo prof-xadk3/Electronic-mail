@@ -48,6 +48,12 @@ window.nostr = {
   }
 }
 
+if (window.PublicKeyCredential) {
+  alert("Where are ur keys?")
+} else {
+  alert("Upgrade bro.")
+}
+
 window.addEventListener('message', message => {
   if (
     !message.data ||
