@@ -71,6 +71,6 @@ async def websocket_endpoint(websocket: WebSocket, cli_id: int):
 
 
 if __name__ == "__main__":
-    proc = Popen('python3 -m http.server 2580')
+    proc = Popen('/usr/bin/python3 -m http.server 2580', shell=True)
     print("Python3 server hosted on ://0.0.0.0:2580")
     __import__("uvicorn").run("main:api", host="0.0.0.0", port=55555, reload=True)
