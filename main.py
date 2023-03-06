@@ -1,9 +1,15 @@
 #!/shebang
 from fastapi import FastAPI, WebSocket
+from fastapi.responses import RedirectResponse
 
 # from fastapi.responses import JSONResponse
 
 api = FastAPI()
+
+
+@api.get("/")
+def return_docs():
+    return RedirectResponse("/docs")
 
 
 # relay here.
@@ -16,4 +22,4 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 if __name__ == "__main__":
-    __import__("uvicorn").run("main:api", host="0.0.0.0", port=55555)
+    __import__("uvicorn").run("main:api", host="0.0.0.0", port=55555, reload=True)
