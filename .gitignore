@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# idk some bs.
+_null-ls*.py
+_null-ls*.js
+_null-ls*.html
+_null-ls*.txt
+_null-ls*.md
+_null-ls*.svg
+_null-ls*.json
+_null-ls*.xml
+_null-ls*.jwt
+_null-ls*.TOKEN
