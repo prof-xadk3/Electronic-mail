@@ -1,6 +1,7 @@
 var md5 = new gruft.MD5();
 var sha256 = new gruft.SHA256();
-const socket = io();
+// var tiger = new gruft.Tiger192();
+const socket = new WebSocket("ws://localhost:55555");
 
 window.nostr = {
   _requests: {},
@@ -87,8 +88,8 @@ async function replaceNostrSchemeLink(e) {
 echoRelays = [] // nostr ofc. wait.
 
 document.querySelector('.cmd').onkeydown = (event) => {
-  console.log(event);
   if (event.key === "Enter") {
+    console.log(sha256.digest(event));
     document.body.style.background = "lime";
     setInterval(() => {
       document.body.style = "black";
