@@ -6,6 +6,7 @@ from fastapi import FastAPI, WebSocket
 api = FastAPI()
 
 
+# relay here.
 @api.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()

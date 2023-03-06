@@ -85,14 +85,19 @@ async function replaceNostrSchemeLink(e) {
   e.target.href = response
 }
 
-echoRelays = [] // nostr ofc. wait.
+echoRelays = [
+  "wss://relay.f7z.io",
+  "wss://nos.lol",
+  "wss://relay.nostr.info",
+  "wss://nostr-pub.wellorder.net",
+  "wss://relay.current.fyi",
+  "wss://relay.nostr.band"
+] // #nostr ofc. wait.
 
 document.querySelector('.cmd').onkeydown = (event) => {
   if (event.key === "Enter") {
-    console.log(sha256.digest(event));
-    document.body.style.background = "lime";
-    setInterval(() => {
-      document.body.style = "black";
-    })
+    console.log("Trigger ===", sha256.digest(event.key));
   }
 };
+
+console.log(echoRelays);
